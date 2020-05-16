@@ -17,7 +17,7 @@ Mac： 2.8 GHz Intel Core i7 4核
 
 并发4 ， 请求20000
 
-![并发4核](./doc/images/stress-n20000-c4.png)
+![并发4核](./doc/images/stress-n2000-c4.png)
 
 
 Summary:
