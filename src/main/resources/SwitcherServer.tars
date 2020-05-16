@@ -1,0 +1,52 @@
+module sw {
+
+   struct CommonInParam {
+     0  require int        platform;
+     1  require int        appId;
+     2  require int        areaId;
+     3  require string     serverIp="";
+     4  require string     version="";
+   };
+
+   const int ERROR_SUCCESS = 0;
+   const int ERROR_INTERNAL_ERROR = 500;
+   const int ERROR_PARAM_ERROR = 1000;
+   const int ERROR_SW_NOT_EXIST = 2000;
+   const int ERROR_SW_RULE_NOT_EXIST = 2001;
+   const int ERROR_SW_RULE_FORMAT_INVALID = 2002;
+   const int ERROR_SW_RULE_TYPE_INVALID = 2003;
+
+   interface Switcher {
+
+     /**
+      * 普通开关类型 , 判断开关是否打开
+      * @param in 统一入参
+      * @param string swKey  开关唯一KEY
+      * @param bool swStatus 开关结果
+      * @return RPC 调用结果 , 0:success , 其它失败,详见错误返回码wiki
+      */
+     int  swOn(CommonInParam in, string  swKey, out bool swStatus);
+
+     /**
+      * 正则开关类型 , 判断开关是否打开
+      * @param in 统一入参
+      * @param string swKey  开关唯一KEY
+      * @param string expression 待校验结果
+      * @param bool swStatus 开关结果
+      * @return RPC 调用结果 , 0:success , 其它失败,详见错误返回码wiki
+      */
+     int swRegularOn(CommonInParam in, string  swKey,string expression, out bool swStatus);
+
+
+     /**
+      * 灰度开关类型  , 判断开关是否打开
+      * @param in 统一入参
+      * @param string swKey  开关唯一KEY
+      * @param string grayId 待校验结果
+      * @param bool swStatus 开关结果
+      * @return RPC 调用结果 , 0:success , 其它失败,详见错误返回码wiki
+      */
+     int swGrayOn(CommonInParam in, string  swKey,string grayId, out bool swStatus);
+
+   };
+}

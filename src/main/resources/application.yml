@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    username: mqq
+    password: myCynosdb2020
+    url: jdbc:mysql://sh-cynosdbmysql-grp-9fgh7n0e.sql.tencentcdb.com:26675/ccSwitcher?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
+    driver-class-name: com.mysql.jdbc.Driver
+  cache:
+    cache-names: swCache,swRuleCache
+    caffeine:
+      spec: initialCapacity=500,maximumSize=500,expireAfterWrite=5s
